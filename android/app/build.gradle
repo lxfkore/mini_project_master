@@ -1,0 +1,51 @@
+// android/app/build.gradle
+
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.miniproject"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // Application ID (package name)
+        applicationId = "com.example.miniproject"
+
+        // Minimum and target SDK versions
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+
+        // Versioning
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // Release build configuration (signing with debug keys for now)
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+// This specifies the location of the Flutter module
+flutter {
+    source = "../.."
+}
+
+// Apply the Google services plugin (required for Firebase)
+apply plugin: 'com.google.gms.google-services'
